@@ -1,4 +1,12 @@
-[gd_scene format=3 uid="uid://wsdavsnno18w"]
+[gd_scene load_steps=8 format=3 uid="uid://wsdavsnno18w"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_sh2of"]
+[ext_resource type="Texture2D" uid="uid://cimrpy7c6e23i" path="res://assets/backgrounds/GalaxyUno.png" id="1_ygpjp"]
+[ext_resource type="Texture2D" uid="uid://dkflgx5j2n3hs" path="res://assets/backgrounds/spr_stars01.png" id="2_raeju"]
+[ext_resource type="Texture2D" uid="uid://0kkm2uymlgsq" path="res://assets/backgrounds/spr_stars02.png" id="3_p0pih"]
+[ext_resource type="LabelSettings" uid="uid://cb2u5o7m8jgyn" path="res://assets/LG_Title.tres" id="4_71tbk"]
+[ext_resource type="PackedScene" uid="uid://bp5esxaaoyors" path="res://scenes/sun/sun.tscn" id="5_8pxhl"]
+[ext_resource type="PackedScene" uid="uid://cf7cxhogfmudq" path="res://scenes/utility/ui/ui_button.tscn" id="5_ne7g2"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -7,3 +15,72 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sh2of")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ygpjp")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_raeju")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_p0pih")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Space Ace
+(ish)"
+label_settings = ExtResource("4_71tbk")
+horizontal_alignment = 1
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="PlayButton" parent="MC/VB" instance=ExtResource("5_ne7g2")]
+layout_mode = 2
+text = "Play"
+
+[node name="ExitButton" parent="MC/VB" instance=ExtResource("5_ne7g2")]
+layout_mode = 2
+text = "Exit"
+
+[node name="Sun" parent="." instance=ExtResource("5_8pxhl")]
+position = Vector2(78.0001, 72)
+scale = Vector2(0.35, 0.35)
+
+[connection signal="pressed" from="MC/VB/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MC/VB/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -6,11 +6,14 @@ class_name Player
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shield: Shield = $Shield
 
 var _lower_left: Vector2
 var _lower_right: Vector2
 
-const MARGIN: float = 50.0
+var _stored_power: PowerUp.PowerUpType = PowerUp.PowerUpType.NONE
+
+const MARGIN: float = 20.0
 
 func _ready() -> void:
 	set_limits()
@@ -25,6 +28,17 @@ func _process(delta: float) -> void:
 	)
 
 func get_input() -> Vector2:
+	if Input.is_action_just_pressed("shoot") == true:
+		SignalManager.on_create_bullet.emit(
+			position,
+			Vector2.UP,
+			100,
+			BaseBullet.BULLET_TYPE.PLAYER
+		)
+	
+	if Input.is_action_just_pressed("item") == true:
+		use_power()
+	
 	var direction: Vector2 = Vector2(
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down"),
@@ -43,3 +57,20 @@ func set_limits() -> void:
 	var vp: Rect2 = get_viewport_rect()
 	_lower_right = Vector2(vp.size.x - MARGIN, vp.size.y - MARGIN)
 	_lower_left = Vector2(MARGIN, MARGIN)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is PowerUp:
+		_stored_power = area.get_type()
+		print(area)
+
+func use_power() -> void:
+	if _stored_power == PowerUp.PowerUpType.NONE:
+		return
+
+	match _stored_power:
+		PowerUp.PowerUpType.SHIELD:
+			shield.enable_shield()
+		PowerUp.PowerUpType.HEALTH:
+			print("HEAL")
+	
+	_stored_power = PowerUp.PowerUpType.NONE

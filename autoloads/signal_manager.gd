@@ -1,11 +1,4 @@
 extends Node
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+signal on_create_bullet(start_pos: Vector2, dir: Vector2, speed: float, bu_type: BaseBullet.BULLET_TYPE)
+signal on_create_powerup(start_pos: Vector2, pu_type: PowerUp.PowerUpType)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://df8718f33s7ru"]
+
+[ext_resource type="PackedScene" uid="uid://y74wcalb5nxf" path="res://scenes/utility/hit_box.tscn" id="1_brf6p"]
+[ext_resource type="Texture2D" uid="uid://j0f6jr1v2amd" path="res://assets/misc/powerupGreen_bolt.png" id="2_dcd8h"]
+[ext_resource type="Script" path="res://scenes/power_up/power_up.gd" id="2_rsoof"]
+[ext_resource type="PackedScene" uid="uid://dxheh6ru7yg7y" path="res://scenes/utility/out_of_time.tscn" id="3_v6mlj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mt0op"]
+radius = 9.0
+height = 20.0
+
+[node name="PowerUp" instance=ExtResource("1_brf6p")]
+collision_layer = 64
+collision_mask = 1
+script = ExtResource("2_rsoof")
+type = 1
+speed = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dcd8h")
+
+[node name="OutOfTime" parent="." index="1" instance=ExtResource("3_v6mlj")]
+life_s = 10.0
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." index="2"]
+
+[node name="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CapsuleShape2D_mt0op")

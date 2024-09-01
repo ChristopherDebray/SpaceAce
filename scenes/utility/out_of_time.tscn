@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxheh6ru7yg7y"]
+
+[ext_resource type="Script" path="res://out_of_time.gd" id="1_o2itf"]
+
+[node name="OutOfTime" type="Node"]
+script = ExtResource("1_o2itf")
+
+[node name="Timer" type="Timer" parent="."]

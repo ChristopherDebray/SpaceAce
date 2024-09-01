@@ -118,4 +118,4 @@ animations = [{
 [node name="Sun" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_37iw4")
 autoplay = "default"
-frame_progress = 0.668153
+frame_progress = 0.737483

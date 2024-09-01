@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh2e1w5elcxgf"]
+
+[ext_resource type="PackedScene" uid="uid://d1in1lk1f8cab" path="res://scenes/base_bullet/base_bullet.tscn" id="1_cyhmr"]
+[ext_resource type="Texture2D" uid="uid://bkpotjthxgv1j" path="res://assets/lasers/circle_bomb_red-Sheet.png" id="2_mov5p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wttwv"]
+radius = 11.0454
+
+[sub_resource type="Animation" id="Animation_w2gxw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_00qca"]
+resource_name = "blink"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0nafp"]
+_data = {
+"RESET": SubResource("Animation_w2gxw"),
+"blink": SubResource("Animation_00qca")
+}
+
+[node name="EnemyBomb" instance=ExtResource("1_cyhmr")]
+collision_layer = 8
+collision_mask = 33
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_wttwv")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_mov5p")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_0nafp")
+}
+autoplay = "blink"

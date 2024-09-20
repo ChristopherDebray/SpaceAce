@@ -11,14 +11,12 @@ class_name Shield
 
 var _health: int = start_health
 
-func _ready() -> void:
-	pass # Replace with function body.
-
 func enable_shield() -> void:
 	_health = start_health
 	# Godot might be calculating something else during this call so we use call_deferred to prevent potential bugs
 	collision_shape_2d.call_deferred("set_disabled", false)
 	timer.start()
+	SoundManager.play_power_up_sound(PowerUp.PowerUpType.SHIELD, sound)
 	show()
 
 func disable_shield() -> void:

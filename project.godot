@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 SignalManager="*res://autoloads/signal_manager.gd"
 GameManager="*res://autoloads/game_manager.gd"
+SoundManager="*res://autoloads/sound_manager.gd"
 
 [display]
 

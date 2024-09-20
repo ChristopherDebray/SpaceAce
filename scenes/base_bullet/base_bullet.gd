@@ -17,6 +17,10 @@ func setup(dir: Vector2, speed: float) -> void:
 	_speed = speed
 
 func blow_up() -> void:
+	SignalManager.on_create_explosion.emit(
+		global_position,
+		Explosion.ExplosionType.EXPLOSION
+	)
 	set_process(false)
 	queue_free()
 

@@ -112,12 +112,47 @@ radius = 20.0
 height = 62.0
 
 [node name="EnemyBomber" instance=ExtResource("1_ejqrn")]
+shoots_at_player = true
+aims_at_player = true
+bullet_type = 2
+bullet_speed = 80.0
+bullet_wait_time = 2.0
+bullet_wait_time_var = 0.5
+kill_me_score = 30
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_1u0la")
 animation = &"default_1"
 
+[node name="HitBox" parent="." index="2"]
+damage = 80
+
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CapsuleShape2D_6adk3")
+
+[node name="HealthBar" parent="." index="5"]
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = -32.0
+level_low = 20
+level_med = 40
+start_health = 80
+max_health = 80
+
+[node name="Marker2D" type="Marker2D" parent="Booms" index="0"]
+position = Vector2(-11, -2)
+
+[node name="Marker2D2" type="Marker2D" parent="Booms" index="1"]
+position = Vector2(12, -2)
+
+[node name="Marker2D5" type="Marker2D" parent="Booms" index="2"]
+position = Vector2(0, 8)
+
+[node name="Marker2D3" type="Marker2D" parent="Booms" index="3"]
+position = Vector2(-11, 19)
+
+[node name="Marker2D4" type="Marker2D" parent="Booms" index="4"]
+position = Vector2(14, 18)
 
 [editable path="HitBox"]

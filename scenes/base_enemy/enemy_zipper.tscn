@@ -116,7 +116,22 @@ radius = 18.0278
 sprite_frames = SubResource("SpriteFrames_l1yrh")
 animation = &"default_1"
 
+[node name="HitBox" parent="." index="2"]
+damage = 20
+
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_3mpc4")
+
+[node name="HealthBar" parent="." index="5"]
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 10.0
+offset_bottom = -18.0
+level_low = 0
+level_med = 20
+start_health = 40
+max_health = 40
+
+[node name="Marker2D" type="Marker2D" parent="Booms" index="0"]
 
 [editable path="HitBox"]

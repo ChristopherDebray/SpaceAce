@@ -112,12 +112,36 @@ radius = 13.0
 height = 44.0
 
 [node name="EnemyBio" instance=ExtResource("1_2qa5i")]
+shoots_at_player = true
+bullet_type = 1
+bullet_wait_time = 2.0
+bullet_wait_time_var = 0.3
+kill_me_score = 20
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_mhi1q")
 animation = &"default_3"
 
+[node name="HitBox" parent="." index="2"]
+damage = 40
+
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CapsuleShape2D_lydlj")
+
+[node name="HealthBar" parent="." index="5"]
+offset_left = -15.0
+offset_top = -27.0
+offset_right = 15.0
+offset_bottom = -25.0
+level_low = 20
+level_med = 40
+start_health = 60
+max_health = 60
+
+[node name="Marker2D" type="Marker2D" parent="Booms" index="0"]
+position = Vector2(0, 11)
+
+[node name="Marker2D2" type="Marker2D" parent="Booms" index="1"]
+position = Vector2(0, -8)
 
 [editable path="HitBox"]

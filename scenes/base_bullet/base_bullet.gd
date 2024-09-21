@@ -7,7 +7,7 @@ enum BULLET_TYPE { PLAYER, ENEMY, ENEMY_BOMB }
 @export var bullet_type: BULLET_TYPE = BULLET_TYPE.PLAYER
 
 var _direction: Vector2 = Vector2.UP
-var _speed: float = 200.0
+var _speed: float = 250.0
 
 func _process(delta: float) -> void:
 	position += delta * _speed * _direction

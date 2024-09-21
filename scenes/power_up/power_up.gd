@@ -8,7 +8,7 @@ class_name PowerUp
 @export var type: PowerUpType = PowerUpType.SHIELD
 @export var speed: float = 50.0
 
-enum PowerUpType { NONE, SHIELD, HEALTH }
+enum PowerUpType { SHIELD, HEALTH }
 
 const TEXTURES: Dictionary = {
 	PowerUpType.SHIELD: preload("res://assets/misc/shield_gold.png"),

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://wsdavsnno18w"]
+[gd_scene load_steps=9 format=3 uid="uid://wsdavsnno18w"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_sh2of"]
 [ext_resource type="Texture2D" uid="uid://cimrpy7c6e23i" path="res://assets/backgrounds/GalaxyUno.png" id="1_ygpjp"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://cb2u5o7m8jgyn" path="res://assets/LG_Title.tres" id="4_71tbk"]
 [ext_resource type="PackedScene" uid="uid://bp5esxaaoyors" path="res://scenes/sun/sun.tscn" id="5_8pxhl"]
 [ext_resource type="PackedScene" uid="uid://cf7cxhogfmudq" path="res://scenes/utility/ui/ui_button.tscn" id="5_ne7g2"]
+[ext_resource type="AudioStream" uid="uid://bo8y1d7oauupr" path="res://assets/sounds/loops/TitleScreen.mp3" id="8_jcdpb"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -81,6 +82,10 @@ text = "Exit"
 [node name="Sun" parent="." instance=ExtResource("5_8pxhl")]
 position = Vector2(78.0001, 72)
 scale = Vector2(0.35, 0.35)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_jcdpb")
+autoplay = true
 
 [connection signal="pressed" from="MC/VB/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MC/VB/ExitButton" to="." method="_on_exit_button_pressed"]

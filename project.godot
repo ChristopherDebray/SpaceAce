@@ -20,12 +20,18 @@ config/icon="res://icon.png"
 SignalManager="*res://autoloads/signal_manager.gd"
 GameManager="*res://autoloads/game_manager.gd"
 SoundManager="*res://autoloads/sound_manager.gd"
+ScoreManager="*res://autoloads/score_manager.gd"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=480
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+Player=""
+Moveable=""
 
 [input]
 

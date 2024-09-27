@@ -111,6 +111,8 @@ animations = [{
 radius = 18.0278
 
 [node name="EnemyZipper" instance=ExtResource("1_nbmsh")]
+rotates = false
+power_up_chance = 0.1
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_l1yrh")

@@ -1,34 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://cyaepsfvt5m25"]
+[gd_scene load_steps=12 format=3 uid="uid://cyaepsfvt5m25"]
 
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_jkk2b"]
 [ext_resource type="PackedScene" uid="uid://b43em156wus1y" path="res://scenes/level_bg/level_bg.tscn" id="2_h87fg"]
 [ext_resource type="PackedScene" uid="uid://ctelh346d8gly" path="res://scenes/player/player.tscn" id="3_gw1k2"]
 [ext_resource type="PackedScene" uid="uid://ceu68wtkqwdy5" path="res://scenes/utility/object_maker.tscn" id="4_uc1tt"]
-[ext_resource type="PackedScene" uid="uid://c16blfedt1aiq" path="res://scenes/base_enemy/enemy_bio.tscn" id="6_7763l"]
-[ext_resource type="PackedScene" uid="uid://ejpuvk62is67" path="res://scenes/base_enemy/enemy_bomber.tscn" id="7_t1ui8"]
-[ext_resource type="PackedScene" uid="uid://dnqngql5mdh6s" path="res://scenes/base_enemy/enemy_zipper.tscn" id="7_y47fm"]
 [ext_resource type="PackedScene" uid="uid://vpbxeb3tlamf" path="res://scenes/game_ui/game_ui.tscn" id="8_kvr3a"]
 [ext_resource type="PackedScene" uid="uid://bkun727yd3n5n" path="res://scenes/game_over/game_over.tscn" id="9_01noh"]
 [ext_resource type="PackedScene" uid="uid://b26vmxw0u1uea" path="res://scenes/utility/shake_cam.tscn" id="9_c3f2q"]
+[ext_resource type="PackedScene" uid="uid://bcdbdh1ls6mkf" path="res://scenes/utility/wave_manager.tscn" id="9_pdngl"]
 [ext_resource type="AudioStream" uid="uid://b5e2rp4p1owtk" path="res://assets/sounds/loops/Mercury.wav" id="11_0yu7e"]
-
-[sub_resource type="Curve2D" id="Curve2D_jvmt1"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -58.8793, 237.803, 0, 0, 0, 0, 676, 226)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_tn842"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -47, 126, 0, 0, 0, 0, 680, 116)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_hlwf1"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -47, 56, 0, 0, 0, 0, 683, 49)
-}
-point_count = 2
+[ext_resource type="PackedScene" uid="uid://lbm4kw5mbuva" path="res://scenes/homing_missile/homing_missile.tscn" id="11_3ppf4"]
+[ext_resource type="PackedScene" uid="uid://bfo2vmuge0tj4" path="res://scenes/saucer_manager/saucer_manager.tscn" id="12_khwix"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_jkk2b")
@@ -39,28 +21,6 @@ script = ExtResource("1_jkk2b")
 position = Vector2(331, 291)
 
 [node name="ObjectMaker" parent="." instance=ExtResource("4_uc1tt")]
-
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(16, -31)
-curve = SubResource("Curve2D_jvmt1")
-
-[node name="EnemyBomber" parent="Path2D" instance=ExtResource("7_t1ui8")]
-position = Vector2(-58.8793, 237.803)
-rotation = -0.0160598
-
-[node name="Path2D2" type="Path2D" parent="."]
-curve = SubResource("Curve2D_tn842")
-
-[node name="EnemyBio" parent="Path2D2" instance=ExtResource("6_7763l")]
-position = Vector2(-47, 126)
-rotation = -0.0137543
-
-[node name="Path2D3" type="Path2D" parent="."]
-curve = SubResource("Curve2D_hlwf1")
-
-[node name="EnemyZipper" parent="Path2D3" instance=ExtResource("7_y47fm")]
-position = Vector2(-47, 56)
-rotation = -0.00958875
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -75,3 +35,10 @@ anchor_mode = 0
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_0yu7e")
 autoplay = true
+
+[node name="WaveManager" parent="." instance=ExtResource("9_pdngl")]
+
+[node name="HomingMissile" parent="." instance=ExtResource("11_3ppf4")]
+position = Vector2(320, 162)
+
+[node name="SaucerManager" parent="." instance=ExtResource("12_khwix")]

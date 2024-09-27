@@ -5,6 +5,7 @@ const ENEMY_BULLET = preload("res://scenes/base_bullet/enemy_bullet.tscn")
 const PLAYER_BULLET = preload("res://scenes/base_bullet/player_bullet.tscn")
 const POWER_UP = preload("res://scenes/power_up/power_up.tscn")
 const EXPLOSION = preload("res://scenes/explosion/explosion.tscn")
+const HOMING_MISSILE = preload("res://scenes/homing_missile/homing_missile.tscn")
 
 const ADD_OBJECT: String = "add_object"
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 	SignalManager.on_create_powerup.connect(on_create_powerup)
 	SignalManager.on_create_explosion.connect(on_create_explosion)
 	SignalManager.on_create_random_powerup.connect(on_create_random_powerup)
+	SignalManager.on_create_homing_missile.connect(on_create_homing_missile)
 
 func add_object(obj: Node, global_position: Vector2) -> void:
 	add_child(obj)
@@ -44,3 +46,7 @@ func on_create_explosion(start_pos: Vector2, type: Explosion.ExplosionType) -> v
 	var explosion: Explosion = EXPLOSION.instantiate()
 	explosion.setup(type)
 	call_deferred(ADD_OBJECT, explosion, start_pos)
+
+func on_create_homing_missile(start_pos: Vector2) -> void:
+	var hm: HomingMissle = HOMING_MISSILE.instantiate()
+	call_deferred(ADD_OBJECT, hm, start_pos)

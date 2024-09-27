@@ -60,7 +60,7 @@ func set_limits() -> void:
 	_lower_left = Vector2(MARGIN, MARGIN)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is BaseBullet:
+	if area is BaseBullet or area is HomingMissle:
 		SignalManager.on_player_hit.emit(area.get_damage())
 		return
 	
